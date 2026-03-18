@@ -3,7 +3,7 @@ from typing import Any, Optional
 import httpx
 from loguru import logger
 
-def call_api(base_url: str, api_key: Optional[str] = None, params: Optional[dict] = None, headers:Optional[dict] = None) -> Any:
+def call_api(base_url: str, params: Optional[dict] = None, headers:Optional[dict] = None) -> Any:
     """
     Calls the API and returns the response as a dictionary.
 

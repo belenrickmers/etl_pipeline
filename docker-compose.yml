@@ -1,0 +1,30 @@
+# Use postgres/example user/password credentials
+
+services:
+  #this is the name of the server to connect through adminer
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5433:5432
+    # set shared memory limit when using docker compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    volumes:
+     - type: tmpfs
+       target: /dev/shm
+       tmpfs:
+         size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_PORT: ${DB_PORT}
+
+#Creates a lightweight web-based database management tool for PostgreSQL. It allows you to easily manage and interact with your PostgreSQL databases through a user-friendly interface.
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

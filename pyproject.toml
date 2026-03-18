@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "etl-pipeline"
+version = "0.1.0"
+description = "Testing project for etl pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Belen Rickmers Blamey", email = "belen.rickmers@google.com"}
+]
+keywords = ["test", "etl", "pipeline"]
+dependencies = [
+    "dotenv>=0.9.9",
+    "httpx>=0.28.1",
+    "logger>=1.4",
+    "loguru>=0.7.3",
+    "python-dotenv>=1.2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "black>=21.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/belenrickmers/etl-pipeline"
+Repository = "https://github.com/belenrickmers/etl-pipeline.git"
+
+[tool.setuptools]
+packages = ["etl"]
+
+[dependency-groups]
+dev = [
+    "loguru>=0.7.3",
+    "mypy>=1.19.1",
+    "pydantic>=2.12.5",
+]
+
+[tool.mypy]
+python_version = "3.11"
+
+[[tool.mypy.overrides]]
+module = ["loguru"]
+ignore_missing_imports = true

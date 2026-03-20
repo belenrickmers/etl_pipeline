@@ -11,16 +11,14 @@ services:
     shm_size: 128mb
     # or set shared memory limit when deploy via swarm stack
     volumes:
-     - type: tmpfs
-       target: /dev/shm
-       tmpfs:
-         size: 134217728 # 128*2^20 bytes = 128Mb
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_HOST: ${DB_HOST}
       POSTGRES_PORT: ${DB_PORT}
+    
 
 #Creates a lightweight web-based database management tool for PostgreSQL. It allows you to easily manage and interact with your PostgreSQL databases through a user-friendly interface.
   adminer:

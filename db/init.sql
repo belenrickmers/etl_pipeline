@@ -1,0 +1,28 @@
+CREATE SCHEMA IF NOT EXISTS crypto_data;
+CREATE TABLE IF NOT EXISTS crypto_data.coin_market_data (
+    id TEXT,
+    symbol TEXT,
+    name TEXT,
+    current_price NUMERIC(20, 4),
+    market_cap NUMERIC(20, 4),
+    market_cap_rank INTEGER,
+    fully_diluted_valuation NUMERIC(20, 4),
+    total_volume NUMERIC(20, 4),
+    high_24h NUMERIC(20, 4),
+    low_24h NUMERIC(20, 4),
+    price_change_24h NUMERIC(20, 4),
+    price_change_percentage_24h NUMERIC(20, 4),
+    market_cap_change_24h NUMERIC(20, 4),
+    market_cap_change_percentage_24h NUMERIC(20, 4),
+    circulating_supply NUMERIC(20, 4),
+    total_supply NUMERIC(20, 4),
+    ath NUMERIC(20, 4),
+    ath_change_percentage NUMERIC(20, 4),
+    ath_date TIMESTAMPTZ,
+    atl NUMERIC(20, 4),
+    atl_change_percentage NUMERIC(20, 4),
+    atl_date TIMESTAMPTZ,
+    last_updated TIMESTAMPTZ,
+    ingested_at TIMESTAMPTZ,
+    PRIMARY KEY (id, last_updated)
+);

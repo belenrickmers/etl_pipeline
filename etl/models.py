@@ -7,7 +7,6 @@ class CoinMarketData(BaseModel):
     id: str
     symbol: str
     name: str
-    image: str
     current_price: float
     market_cap: float
     market_cap_rank: int
@@ -21,12 +20,10 @@ class CoinMarketData(BaseModel):
     market_cap_change_percentage_24h: float
     circulating_supply: float
     total_supply: float
-    max_supply: Optional[float] = None
     ath: float
     ath_change_percentage: float
     ath_date: datetime
     atl: float
     atl_change_percentage: float
     atl_date: datetime
-    roi: Optional[str] = None
     last_updated: datetime

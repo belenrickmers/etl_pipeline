@@ -18,9 +18,12 @@ dependencies = [
     "logger>=1.4",
     "loguru>=0.7.3",
     "polars>=1.39.2",
+    "psycopg2-binary>=2.9.11",
     "pydantic>=2.12.5",
+    "pydantic-settings>=2.13.1",
     "python-dotenv>=1.2.2",
     "sqlalchemy>=2.0.48",
+    "tenacity>=9.1.4",
 ]
 
 [project.optional-dependencies]

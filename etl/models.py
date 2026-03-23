@@ -12,12 +12,12 @@ class CoinMarketData(BaseModel):
     market_cap_rank: int
     fully_diluted_valuation: float
     total_volume: float
-    high_24h: float
-    low_24h: float
-    price_change_24h: float
-    price_change_percentage_24h: float
-    market_cap_change_24h: float
-    market_cap_change_percentage_24h: float
+    high_24h: float | None
+    low_24h: float | None
+    price_change_24h: float | None
+    price_change_percentage_24h: float | None
+    market_cap_change_24h: float | None
+    market_cap_change_percentage_24h: float | None
     circulating_supply: float
     total_supply: float
     ath: float

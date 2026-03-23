@@ -1,18 +1,14 @@
 
-import os
-
+from etl.config import Settings
 from etl.extract import call_api
-from etl.utils import load_env_variables
 from etl.transform import transform
-from loguru import logger
+from etl.load import load_df_to_db
 
 def __main__():
-    load_env_variables()
-    url = os.getenv("COINGECKO_API_URL")
-    if url is None:
-        raise ValueError("COINGECKO_API_URL environment variable is not set")
-    data = call_api(url)
+    settings = Settings() # type: ignore[call-arg]
+    data = call_api(settings.coingecko_api_url)
     df = transform(data)
+    load_df_to_db(df, settings)
 
 if __name__ == "__main__":
     __main__()

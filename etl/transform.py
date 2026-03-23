@@ -28,6 +28,9 @@ def _convert_to_df(validated_data: list[CoinMarketData]) -> pl.DataFrame:
     """
     Converts a list of CoinMarketData objects to a Polars DataFrame.
     """
+    if validated_data == []:
+        logger.warning("No valid data to convert to DataFrame.")
+        return pl.DataFrame()  # Return an empty DataFrame if no valid data
     logger.debug(f"Converting CoinMarketData to dict")
     df = pl.DataFrame([coin.model_dump() for coin in validated_data]).with_columns(pl.col(pl.Float64).round(4), pl.lit(datetime.now(timezone.utc)).alias("ingested_at"))
     logger.debug(f"DataFrame created with shape: {df.shape}")

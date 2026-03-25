@@ -45,3 +45,16 @@ def transform(data) -> pl.DataFrame:
     validated_data = _validate_data(data)
     df = _convert_to_df(validated_data)
     return df
+
+def validate_df(df: pl.DataFrame) -> None:
+    """
+    Validates the DataFrame to ensure it has the expected schema and data types.
+    """
+    try:
+        assert df.height > 0, "DataFrame is empty."
+        assert (df["current_price"] > 0).all(), "All current_price values must be greater than 0."
+        assert df["id"].is_unique().all(), "All id values must be unique."
+        logger.info("DataFrame validation successful.")
+    except AssertionError as e:
+        logger.error(f"DataFrame validation failed: {e}")
+        raise
